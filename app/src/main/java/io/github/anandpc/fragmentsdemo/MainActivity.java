@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private static final String TAG = "MainActivity";
 
     FragmentManager manager;
-    FragmentTransaction transaction;
+
 
     private boolean mswitch = false;
 
@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
         Log.i(TAG,"MainActivity : onCreate()");
 
             manager = getSupportFragmentManager();
-            transaction = manager.beginTransaction();
     }
 
 
@@ -34,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         if(mswitch){
             Fragment1 fragment1 = new Fragment1();
             Toast.makeText(this,"Fragment 1 Pushed..",Toast.LENGTH_SHORT).show();
+            FragmentTransaction transaction = manager.beginTransaction();
             transaction.add(R.id.frag_container,fragment1);
             transaction.addToBackStack("frag1");
             transaction.commit();
@@ -41,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         }else {
             Fragment2 fragment2 = new Fragment2();
             Toast.makeText(this,"Fragment 2 Pushed..",Toast.LENGTH_SHORT).show();
+            FragmentTransaction transaction = manager.beginTransaction();
             transaction.add(R.id.frag_container,fragment2);
             transaction.addToBackStack("frag2");
             transaction.commit();
